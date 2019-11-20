@@ -22,3 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('googlelogin', function () {
+    return view('googlelogin');
+});
+
+Route::get('auth/google', 'GoogleloginController@redirectToGoogle')->name('google.login');
+Route::get('auth/google/callback', 'GoogleloginController@handleGoogleCallback');
