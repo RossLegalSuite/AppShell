@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function getProfile(Request $request)
+    {
+        // $user = Auth::user();
+        return $request->user();
+    }
 }

@@ -17,11 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/getProfile', 'HomeController@getProfile');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('googlelogin', function () {
@@ -30,3 +31,9 @@ Route::get('googlelogin', function () {
 
 Route::get('auth/google', 'GoogleloginController@redirectToGoogle')->name('google.login');
 Route::get('auth/google/callback', 'GoogleloginController@handleGoogleCallback');
+
+
+
+Route::middleware('auth')->get('/{any?}', function () {
+    return view('layouts/app');
+});
